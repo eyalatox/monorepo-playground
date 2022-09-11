@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "hello"
+version = "0.1.0"
+description = ""
+authors = ["Eyal Paz <eyal@ox.security>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+PyYAML = "3.10"
+requests = "2.1.0"
+Flask = "0.12.5"
+ujson = "1.35"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
