@@ -2,7 +2,7 @@
 name = "hello"
 version = "0.1.0"
 description = ""
-authors = ["Eyal Paz <eyal@ox.security>"]
+authors = ["eyalatox"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
