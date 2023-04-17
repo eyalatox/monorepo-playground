@@ -1,0 +1,21 @@
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+# Order is important; the last matching pattern takes the most precedence.
+
+*                           @AlekSi
+
+/cmd/                       @FerretDB/leads
+/ferretdb/                  @FerretDB/leads
+/integration/               @FerretDB/leads
+/internal/                  @FerretDB/leads
+
+/internal/handlers/hana/    @AlekSi
+
+# @AlekSi for engineering, @ptrfarkas for marketing.
+# See also Mergify configuration.
+/website/                   @AlekSi @ptrfarkas
+
+/build/                     @AlekSi
+/build/legacy-mongo-shell/  @FerretDB/specops
+
+go.mod                      @AlekSi
+go.sum                      @AlekSi

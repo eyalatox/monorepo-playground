@@ -1,3 +1,23 @@
+dist
+node_modules
+bin
+*.hex
+*.svg
+*.gif
+*.png
+*.jpg
+*.jpeg
+*.css
+*.less
+*.blf
+*.ttf
+*.scss
+
+test
+tests
+
+fonts
+images
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

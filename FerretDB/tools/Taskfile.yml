@@ -1,0 +1,22 @@
+# All commands should be invoked from the parent directory; see Taskfile.yml there.
+---
+version: 3
+
+vars:
+  RACEFLAG: -race={{ne OS "windows"}}
+
+tasks:
+  tools-test:
+    cmds:
+      - go test -short {{.RACEFLAG}} -shuffle=on -coverprofile=cover.txt -coverpkg=./... ./checkswitch/...
+
+  tools-lint:
+    cmds:
+      - ../bin/golangci-lint{{exeExt}} run --config=../.golangci.yml ./checkswitch/...
+      - ../bin/golangci-lint{{exeExt}} run --config=../.golangci-new.yml ./checkswitch/...
+      - ../bin/go-consistent{{exeExt}} -pedantic ./checkswitch/...
+      - go vet -vettool=../bin/checkswitch{{exeExt}} ./checkswitch/...
+    sources:
+      - "**/*.go"
+      - "../**/go.mod"
+      - "../**/*.yml"

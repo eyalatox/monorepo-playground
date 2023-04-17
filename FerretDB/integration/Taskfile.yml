@@ -1,0 +1,50 @@
+# All commands should be invoked from the parent directory; see Taskfile.yml there.
+---
+version: 3
+
+vars:
+  RACEFLAG: -race={{ne OS "windows"}}
+
+tasks:
+  env-data:
+    cmds:
+      - >
+        go test -count=1 {{.RACEFLAG}} -run=TestEnvData
+        -tags=ferretdb_testenvdata .
+        -target-backend=ferretdb-pg
+        -postgresql-url=postgres://username@127.0.0.1:5432/ferretdb?pool_min_conns=1
+      - >
+        go test -count=1 {{.RACEFLAG}} -run=TestEnvData
+        -tags=ferretdb_testenvdata .
+        -target-backend=ferretdb-pg
+        -postgresql-url=postgres://username:password@127.0.0.1:5433/ferretdb?pool_min_conns=1
+      - >
+        go test -count=1 {{.RACEFLAG}} -run=TestEnvData
+        -tags=ferretdb_testenvdata,ferretdb_tigris .
+        -target-backend=ferretdb-tigris
+        -tigris-urls=127.0.0.1:8081
+      - >
+        go test -count=1 {{.RACEFLAG}} -run=TestEnvData
+        -tags=ferretdb_testenvdata .
+        -target-backend=mongodb
+        -target-url=mongodb://127.0.0.1:47017/
+
+  integration-gen:
+    cmds:
+      - go generate -x ./...
+
+  integration-lint:
+    cmds:
+      - ../bin/golangci-lint{{exeExt}} run --config=.golangci.yml
+      - ../bin/golangci-lint{{exeExt}} run --config=.golangci-new.yml
+      - ../bin/go-consistent{{exeExt}} -pedantic ./...
+      - ../bin/go-sumtype{{exeExt}} ./...
+      - go vet -vettool=../bin/checkswitch{{exeExt}} ./...
+    sources:
+      - "**/*.go"
+      - "../**/go.mod"
+      - "../**/*.yml"
+
+  integration-security:
+    cmds:
+      - ../bin/govulncheck{{exeExt}} -v -test ./...
