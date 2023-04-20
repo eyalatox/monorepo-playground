@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:kinetic
 
 ARG CHROME_DEB=google-chrome-stable_current_amd64.deb
 ARG FIXUID_VERSION=0.5.1
