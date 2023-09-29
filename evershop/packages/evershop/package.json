@@ -101,7 +101,7 @@
     "semver": "^7.3.5",
     "serve-static": "^1.15.0",
     "session-file-store": "^1.5.0",
-    "sharp": "^0.30.5",
+    "sharp": "^0.32.6",
     "stripe": "^8.176.0",
     "style-loader": "^3.3.1",
     "tailwindcss": "^3.2.1",
