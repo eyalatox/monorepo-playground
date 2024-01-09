@@ -48,7 +48,7 @@
     "webpack-bundle-analyzer": "^4.5.0"
   },
   "dependencies": {
-    "@evershop/evershop": "^1.0.0-beta",
+    "@evershop/evershop": "^1.0.0",
     "babel-plugin-fast-async": "^6.1.2",
     "regenerator-runtime": "^0.13.9",
     "supertest": "^6.2.2"
